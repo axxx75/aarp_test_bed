@@ -1,0 +1,12 @@
+app:
+  name: aarp-test-bed
+  version: "0.1.0"
+  # la chiave 'environment' è intenzionalmente mancante per il test
+database:
+  host: localhost
+  port: 5432
+  user: test_user
+  # password mancante intenzionalmente per simulare configurazione incompleta
+logging:
+  level: INFO
+
