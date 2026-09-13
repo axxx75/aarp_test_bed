@@ -4,9 +4,9 @@ import psycopg2
 class Database:
     def __init__(self):
         # Security finding: password hardcoded
-        self.host = "localhost"
-        self.port = 5432
-        self.user = "test_user"
+        self.host = os.environ.get("DB_HOST", "localhost")
+        self.port = int(os.environ.get("DB_PORT", 5432))
+        self.user = os.environ.get("DB_USER", "test_user")
         import os
         self.password = os.environ.get("DB_PASSWORD", "") # Replaced hardcoded password with environment variable
         self.conn = None
@@ -19,7 +19,7 @@ class Database:
             port=self.port,
             user=self.user,
             password=self.password,
-            dbname="test_db"
+            dbname=os.environ.get("DB_NAME", "test_db")
         )
         return self.conn
 
