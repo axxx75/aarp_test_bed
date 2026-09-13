@@ -7,7 +7,8 @@ class Database:
         self.host = "localhost"
         self.port = 5432
         self.user = "test_user"
-        self.password = "P@ssw0rd_hardcoded"  # <-- hardcoded credential (intended)
+        import os
+        self.password = os.environ.get("DB_PASSWORD", "") # Replaced hardcoded password with environment variable
         self.conn = None
 
     def connect(self):
